@@ -1,167 +1,73 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DHAM-TOURISME</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Global styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f0f8ff;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Helvetica Neue', sans-serif;
-            color: #007bb5;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 100;
-            padding: 10px 20px;
-            background: rgba(0, 123, 181, 0.8);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        header nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        header nav ul li {
-            margin: 0 20px;
-        }
-
-        header nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
-        }
-
-        header nav ul li a:hover {
-            color: #ff9900;
-        }
-
-        /* Banner (Parallax effect) */
-        .banner {
-            background: url('banner.jpg') no-repeat center center fixed;
-            background-size: cover;
-            height: 100vh;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 2em;
-            font-weight: bold;
-            position: relative;
-        }
-
-        .banner h2 {
-            font-size: 3em;
-            animation: fadeIn 3s ease-out;
-        }
-
-        /* Slideshow */
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-        }
-
-        .slides {
-            display: none;
-        }
-
-        .slides img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        /* Footer */
-        footer {
-            background: #007bb5;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with Navigation -->
     <header>
-        <div class="logo">
-            <h1>DHAM-TOURISME</h1>
-        </div>
         <nav>
             <ul>
-                <li><a href="#home">Accueil</a></li>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Banner Section with Parallax Effect -->
-    <section id="home" class="banner">
-        <h2>Explorez Benin, Découvrez sa Culture</h2>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Welcome to DHAM-TOURISME</h1>
+        <p>Explore Benin with unique experiences</p>
     </section>
 
-    <!-- Slideshow Section -->
-    <section id="gallery">
-        <h2>Galerie</h2>
-        <div class="slideshow-container">
-            <div class="slides fade">
-                <img src="image1.jpg" alt="Image 1">
-            </div>
-            <div class="slides fade">
-                <img src="image2.jpg" alt="Image 2">
-            </div>
-            <div class="slides fade">
-                <img src="image3.jpg" alt="Image 3">
-            </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>Discover the rich culture, heritage, and scenic landscapes of Benin with DHAM-TOURISME.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery-container">
+            <img src="images/photo1.jpg" alt="Photo 1">
+            <img src="images/photo2.jpg" alt="Photo 2">
+            <img src="images/photo3.jpg" alt="Photo 3">
+        </div>
+    </section>
+
+    <!-- Contact Section with Social Media Links -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <p>Stay connected with us on social media</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/tonprofil/" target="_blank"><img src="images/instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/tonprofil/" target="_blank"><img src="images/facebook-icon.png" alt="Facebook"></a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 DHAM-TOURISME. Tous droits réservés.</p>
+        <p>&copy; 2024 DHAM-TOURISME. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- JavaScript for Slideshow -->
     <script>
         let slideIndex = 0;
         function showSlides() {
-            let slides = document.getElementsByClassName("slides");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
-            slides[slideIndex - 1].style.display = "block";
-            setTimeout(showSlides, 5000); // Change image every 5 seconds
+            const slides = document.querySelectorAll(".gallery-container img");
+            slides.forEach((slide, index) => {
+                slide.style.display = (index === slideIndex) ? "block" : "none";
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+            setTimeout(showSlides, 2000);
         }
-
-        showSlides();
+        document.addEventListener("DOMContentLoaded", showSlides);
     </script>
 </body>
 </html>
