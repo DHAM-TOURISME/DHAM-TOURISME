@@ -1,1 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DHAM-TOURISME</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f0f8ff;
+        }
 
+        h1, h2, h3 {
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #007bb5;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            padding: 10px 20px;
+            background: rgba(0, 123, 181, 0.8);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        header nav ul li {
+            margin: 0 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #ff9900;
+        }
+
+        /* Banner (Parallax effect) */
+        .banner {
+            background: url('banner.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .banner h2 {
+            font-size: 3em;
+            animation: fadeIn 3s ease-out;
+        }
+
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .slides {
+            display: none;
+        }
+
+        .slides img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Footer */
+        footer {
+            background: #007bb5;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>DHAM-TOURISME</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner Section with Parallax Effect -->
+    <section id="home" class="banner">
+        <h2>Explorez Benin, Découvrez sa Culture</h2>
+    </section>
+
+    <!-- Slideshow Section -->
+    <section id="gallery">
+        <h2>Galerie</h2>
+        <div class="slideshow-container">
+            <div class="slides fade">
+                <img src="image1.jpg" alt="Image 1">
+            </div>
+            <div class="slides fade">
+                <img src="image2.jpg" alt="Image 2">
+            </div>
+            <div class="slides fade">
+                <img src="image3.jpg" alt="Image 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DHAM-TOURISME. Tous droits réservés.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        let slideIndex = 0;
+        function showSlides() {
+            let slides = document.getElementsByClassName("slides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 5000); // Change image every 5 seconds
+        }
+
+        showSlides();
+    </script>
+</body>
+</html>
